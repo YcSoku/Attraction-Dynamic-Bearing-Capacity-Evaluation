@@ -1,8 +1,8 @@
 import math
 import config
 import matplotlib.pyplot as plt
-from dynamicBearing.feature import prepare_features
-from dynamicBearing.filling import FillSet
+from dbc.feature import prepare_features
+from dbc.filling import FillSet
 
 def simulate_v_by_static(max_v: float, duration: float):
     

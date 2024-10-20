@@ -1,7 +1,7 @@
 import math
 import config
 import matplotlib.pyplot as plt
-from dynamicBearing.feature import Feature
+from dbc.feature import Feature
 
 class FillNode:
     
