@@ -36,7 +36,6 @@ class FillSet:
     def __init__(self, features: list[Feature]):
         
         self.simulation_duration = 0.0
-        self.total_passenger_flow = 0
         self.fns: list[FillNode] = []
         self.features = features
         self.current_time = 0.0
@@ -175,11 +174,9 @@ class FillSet:
         return 0
         
     # Step 6
-    def execute(self, vs, duration):
+    def execute(self, ves, vos, duration):
         
-        for v in vs:
-            if v > 0:
-                self.total_passenger_flow += v
+        vs = [ (ves[i] - vos[i]) for i in range(len(ves)) ]
         
         self.simulation_duration = duration
         time_step = config.TIME_STEP_MINUTE
@@ -269,9 +266,6 @@ class FillSet:
         
         print('\n\n========= Attraction Dynamic Bearing Capacity Simulation  =========\n\n')
         print(f'The Static Bearing Capacity is {self.sb}\n\n')
-        
-        print('====== Simulated Total Passenger Flow  ======\n\n')
-        print(f'{int(self.total_passenger_flow)}\n\n')
         
         print('====== Dynamic Bearing Capacity  ======\n\n')
         print([int(db) for db in self.dbs])
